@@ -21,6 +21,14 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
+        "gray": "#959EAD",
+        "gray-light": "#F9FAFB",
+        "grayBr": "#F4F6F8",
+        "blueGreen": "#47C1BF",
+        "myviolet": "#43467F",
+        "violetLight": "#5C6AC4",
+        "yellowStar": "#EEC200",
+        "redText": "#DE3618",
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -69,6 +77,8 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        roboto: ["Roboto", "sans-serif"],
+        rubik: ["Rubik", "sans-serif"],
       },
       keyframes: {
         ring: {

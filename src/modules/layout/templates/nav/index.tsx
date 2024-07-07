@@ -1,12 +1,14 @@
 
+
 import { Suspense } from "react"
 
 import { listRegions } from "@lib/data"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
+import Account from "@modules/layout/components/account"
+import Likes from "@modules/layout/components/likes"
 
-import { useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -16,32 +18,32 @@ import {
   faYoutube,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+
+
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
 
+
   return (
-    <div className="sticky top-0 inset-x-0 z-50 group">
-      <div className="flex font-rubik max-w-screen justify-between w-[380px] lg:w-full lg:gap-0">
+    <div className="sticky top-0 inset-x-0 z-50 group pt-[20px]">
+      <div className="box flex font-rubik max-w-screen justify-between w-[380px] lg:w-full lg:gap-0">
           <div className="lg:flex hidden gap-3">
             <Link href="https://www.facebook.com" passHref>
               <FontAwesomeIcon
                 icon={faFacebook}
-                
-                className="text-gray text-[20px]"
+                className="text-gray w-[20px] h-[20px]"
               />
             </Link>
             <Link href="https://www.twitter.com" passHref>
               <FontAwesomeIcon
                 icon={faTwitter}
-                // size="20px"
-                className="text-gray"
+                className="text-gray w-[20px] h-[20px]"
               />
             </Link>
             <Link href="https://www.youtube.com" passHref>
               <FontAwesomeIcon
                 icon={faYoutube}
-                // size="20px"
-                className="text-gray"
+                className="text-gray w-[20px] h-[20px]"
               />
             </Link>
             <Link href="https://www.instagram.com" passHref>
@@ -99,7 +101,10 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Account
+               <Likes />
+            
+              <Account />
+          
               </LocalizedClientLink>
             </div>
             <Suspense

@@ -31,7 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/modules/layout/components/likes/index.jsx", "src/modules/layout/components/account/index.jsx"  ],
   "exclude": [
     "node_modules",
     ".next",
