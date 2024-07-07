@@ -29,6 +29,7 @@ module.exports = {
         "violetLight": "#5C6AC4",
         "yellowStar": "#EEC200",
         "redText": "#DE3618",
+        "whiteText": "#FFFFFF",
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",

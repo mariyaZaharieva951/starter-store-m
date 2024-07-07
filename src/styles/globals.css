@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .boxSmall {
   max-width: 1110px;
+  margin: 0 auto;
 } 
 
 .input-no-border {
@@ -35,6 +36,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
+  text-wrap: nowrap;
+  
 }
 
 .custom-button:hover {
