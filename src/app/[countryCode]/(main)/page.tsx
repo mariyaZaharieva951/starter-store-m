@@ -4,6 +4,8 @@ import { Metadata } from "next"
 import { getCollectionsList, getProductsList, getRegion } from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
+import Benefits from "@modules/home/components/benefits"
+import Products from "@modules/home/components/products"
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 
@@ -69,6 +71,8 @@ export default async function Home({
   return (
     <>
       <Hero />
+      <Benefits/>
+      <Products/>
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
