@@ -11,7 +11,7 @@ export default async function FeaturedProducts({
   region: Region
 }) {
   return collections.map((collection) => (
-    <li key={collection.id}>
+    <li className="flex flex-col" key={collection.id}>
       <ProductRail collection={collection} region={region} />
     </li>
   ))

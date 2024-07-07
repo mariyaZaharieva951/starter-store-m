@@ -80,7 +80,7 @@ export default async function Home({
       <Banner/>
       <Category/>
       <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
+        <ul className="boxSmall w-full mx-auto flex flex-col lg:flex-row justify-between lg:py-20px px-2 lg:px-0 gap-7 lg:gap-0">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
       </div>

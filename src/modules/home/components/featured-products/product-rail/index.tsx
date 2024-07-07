@@ -19,14 +19,11 @@ export default function ProductRail({
   }
 
   return (
-    <div className="content-container py-12 small:py-24">
+    <div className="flex flex-col jusify-between items-start">
       <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
-        <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
-        </InteractiveLink>
+        <Text className="text-[22px] font-bold text-left">{collection.title}</Text>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
+      <ul className="flex flex-col gap-y-5 gap-x-12 mb-5">
         {products &&
           products.map((product) => (
             <li key={product.id}>
@@ -38,6 +35,9 @@ export default function ProductRail({
             </li>
           ))}
       </ul>
+      <InteractiveLink href={`/collections/${collection.handle}`}>
+          View all
+        </InteractiveLink>
     </div>
   )
 }

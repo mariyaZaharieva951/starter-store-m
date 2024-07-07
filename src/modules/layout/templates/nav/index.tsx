@@ -25,7 +25,7 @@ export default async function Nav() {
 
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 group pt-[20px]">
+    <div className="sticky top-0 inset-x-0 z-50 bg-white group pt-[20px]">
       <div className="box flex font-rubik max-w-screen justify-between w-[380px] lg:w-full lg:gap-0">
           <div className="lg:flex hidden gap-3">
             <Link href="https://www.facebook.com" passHref>
@@ -49,8 +49,7 @@ export default async function Nav() {
             <Link href="https://www.instagram.com" passHref>
               <FontAwesomeIcon
                 icon={faInstagram}
-                // size="20px"
-                className="text-gray"
+                className="text-gray w-[20px] h-[20px]"
               />
             </Link>
           </div>
