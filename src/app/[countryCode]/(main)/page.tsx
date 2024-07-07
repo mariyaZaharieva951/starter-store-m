@@ -6,6 +6,10 @@ import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import Benefits from "@modules/home/components/benefits"
 import Products from "@modules/home/components/products"
+import Banner from "@modules/home/components/banner"
+import Category from "@modules/home/components/category"
+import Blog from "@modules/home/components/blog"
+import Posters from "@modules/home/components/posters"
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 
@@ -73,11 +77,15 @@ export default async function Home({
       <Hero />
       <Benefits/>
       <Products/>
+      <Banner/>
+      <Category/>
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
       </div>
+      <Blog/>
+      <Posters/>
     </>
   )
 }

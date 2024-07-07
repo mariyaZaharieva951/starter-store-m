@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { Button } from "@medusajs/ui"
 import pr from '/public/assets/pr.png';
 import pr1 from '/public/assets/pr1.png';
 import pr2 from '/public/assets/pr2.png';
@@ -154,12 +155,12 @@ const Products = () => {
               </div>
               {hoveredProductId === product.id && (
                 <div className="absolute left-0 right-0 bottom-0 bg-white flex flex-col items-center gap-1 -mb-[60px] z-10 transition-opacity pb-2 rounded-md">
-                  <button className="w-[215px] h-[40px] custom-button bg-violetLight text-white">
+                  <Button className="w-[215px] h-[40px] custom-button bg-violetLight text-white">
                     Add to Cart
-                  </button>
-                  <button className="w-[215px] h-[40px] custom-button text-gray border-2 border-gray bg-white">
+                  </Button>
+                  <Button className="w-[215px] h-[40px] custom-button text-gray border border-gray bg-white">
                     Quick View
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>
