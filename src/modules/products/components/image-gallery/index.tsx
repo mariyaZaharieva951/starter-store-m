@@ -1,3 +1,5 @@
+
+
 import { Image as MedusaImage } from "@medusajs/medusa"
 import { Container } from "@medusajs/ui"
 import Image from "next/image"
@@ -14,7 +16,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           return (
             <Container
               key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
+              className="relative aspect-[29/34] w-[50%] overflow-hidden bg-ui-bg-subtle"
               id={image.id}
             >
               <Image
