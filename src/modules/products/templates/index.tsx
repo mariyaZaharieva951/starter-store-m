@@ -1,6 +1,7 @@
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import React, { Suspense } from "react"
+import { Heading, Text } from "@medusajs/ui"
 
 import ImageGallery from "@modules/products/components/image-gallery"
 import ProductActions from "@modules/products/components/product-actions"
@@ -29,33 +30,49 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div
-        className="content-container flex flex-col small:flex-row small:items-start py-6 relative"
+        className="content-container flex flex-col small:flex-col small:items-start py-6 relative gap-10"
         data-testid="product-container"
       >
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
-          <ProductInfo product={product} />
+        <div className="w-full mx-auto flex small:flex-row small:gap-12 xsmall:flex-col 2xsmall:flex-col xsmall:items-center 2xsmall:items-center">
+          <div className="block w-1/2 relative">
+            <ImageDetails images={product?.images || []} />
+
+          </div>
+          <div className="small:w-1/2 flex flex-col small:flex-col gap-3 small:sticky small:top-48 small:py-0 small:max-w-[300px]" >
+            <ProductInfo product={product} />
+            <div>
+              <ProductOnboardingCta />
+              <Suspense
+                fallback={
+                  <ProductActions
+                    disabled={true}
+                    product={product}
+                    region={region}
+                  />
+                }
+              >
+                <ProductActionsWrapper id={product.id} region={region} />
+              </Suspense>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-full w-full py-8  gap-y-6">
+          <Heading level="h2" className="text-2xl leading-10 text-ui-fg-base pl-3" data-testid="product-title">
+            Description
+          </Heading>
+          <Text className="text-medium text-ui-fg-subtle text-gray-dark" data-testid="product-description">
+            {product.description}
+          </Text>
           <ProductTabs product={product} />
         </div>
-        <div className="block w-full relative">
-          <ImageDetails images={product?.images || []} />
-        </div>
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
-          <ProductOnboardingCta />
-          <Suspense
-            fallback={
-              <ProductActions
-                disabled={true}
-                product={product}
-                region={region}
-              />
-            }
-          >
-            <ProductActionsWrapper id={product.id} region={region} />
-          </Suspense>
-        </div>
       </div>
+
+
       <div
         className="content-container my-16 small:my-32"
         data-testid="related-products-container"
@@ -64,7 +81,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>
       </div>
-    </>
+    </div>
   )
 }
 

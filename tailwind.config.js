@@ -30,6 +30,7 @@ module.exports = {
         "yellowStar": "#EEC200",
         "redText": "#DE3618",
         "whiteText": "#FFFFFF",
+        "gray-dark": "#5A7184",
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -167,7 +168,16 @@ module.exports = {
         "slide-in": "slide-in 1.2s cubic-bezier(.41,.73,.51,1.02)",
         leave: "leave 150ms ease-in forwards",
       },
+      aspectRatio: {
+        '16/9': '16 / 9',
+        '4/3': '4 / 3',
+        '1/1': '1 / 1',
+        '29/34': '29 / 34'
+      
+      },
     },
   },
-  plugins: [require("tailwindcss-radix")()],
+  plugins: [require("tailwindcss-radix")(),
+    require('@tailwindcss/aspect-ratio')
+  ],
 }

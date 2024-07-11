@@ -11,6 +11,7 @@ import { useIntersection } from "@lib/hooks/use-in-view"
 import { addToCart } from "@modules/cart/actions"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/option-select"
+import OptionQuantity from "@modules/products/components/option-quantity"
 
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
@@ -34,7 +35,7 @@ export default function ProductActions({
   disabled,
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string>>({})
-  const [isAdding, setIsAdding] = useState(false)
+  const [isAdding, setIsAdding] = useState(false);
 
   const countryCode = useParams().countryCode as string
 
@@ -143,13 +144,20 @@ export default function ProductActions({
             <div className="flex flex-col gap-y-4">
               {(product.options || []).map((option) => {
                 return (
-                  <div key={option.id}>
+                  <div key={option.id} className="flex w-full justify-between">
                     <OptionSelect
                       option={option}
                       current={options[option.id]}
                       updateOption={updateOptions}
                       title={option.title}
                       data-testid="product-options"
+                      disabled={!!disabled || isAdding}
+                    />
+                    <OptionQuantity
+                      current={options.quantity || ""}
+                      updateOption={updateOptions}
+                      title="Quantity"
+                      data-testid="product-quantity"
                       disabled={!!disabled || isAdding}
                     />
                   </div>
@@ -159,35 +167,46 @@ export default function ProductActions({
             </div>
           )}
         </div>
-
-        <ProductPrice product={product} variant={variant} region={region} />
-
+        <div>
+          {/* {!variant && (
         <Button
-          onClick={handleAddToCart}
-          disabled={!inStock || !variant || !!disabled || isAdding}
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
+          // onClick={handleSelectVariant}
+          
+          variant="secondary"
+          className="w-full h-10 mb-4" 
+          data-testid="select-variant-button"
         >
-          {!variant
-            ? "Select variant"
-            : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+          Select variant
         </Button>
-        <MobileActions
-          product={product}
-          variant={variant}
-          region={region}
-          options={options}
-          updateOptions={updateOptions}
-          inStock={inStock}
-          handleAddToCart={handleAddToCart}
-          isAdding={isAdding}
-          show={!inView}
-          optionsDisabled={!!disabled || isAdding}
-        />
+      )} */}
+        </div>
+        <div className="flex justify-between">
+          <ProductPrice product={product} variant={variant} region={region} />
+
+          <Button
+            onClick={handleAddToCart}
+            disabled={!inStock || !variant || !!disabled || isAdding}
+            // variant="primary"
+            className="w-[145px] custom-button bg-myviolet text-whiteText"
+            isLoading={isAdding}
+            data-testid="add-product-button"
+          >
+            {!inStock ? "Out of stock" : "Add to cart"}
+          </Button>
+          <MobileActions
+            product={product}
+            variant={variant}
+            region={region}
+            options={options}
+            updateOptions={updateOptions}
+            inStock={inStock}
+            handleAddToCart={handleAddToCart}
+            isAdding={isAdding}
+            show={!inView}
+            optionsDisabled={!!disabled || isAdding}
+          />
+        </div>
+
       </div>
     </>
   )
