@@ -8,8 +8,8 @@ type ProductInfoProps = {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
-    <div id="product-info">
-      <div className="flex flex-col gap-y-4 lg:w-[500px] mx-auto">
+    <div id="product-info justify-between h-full">
+      <div className="flex flex-col items-start gap-y-3 mx-auto 2xsmall:px-20 2xsmall:pt-10 xsmall:pt-10">
         {product.collection && (
           <LocalizedClientLink
             href={`/collections/${product.collection.handle}`}
@@ -22,7 +22,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           {product.title}
         </Heading>
 
-        <Text className="text-medium text-ui-fg-subtle text-gray-dark
+        <Text className="text-medium text-ui-fg-subtle text-gray-dark pb-2
         " data-testid="product-description">
           {product.description}
         </Text>

@@ -35,14 +35,14 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         className="content-container flex flex-col small:flex-col small:items-start py-6 relative gap-10"
         data-testid="product-container"
       >
-        <div className="w-full mx-auto flex small:flex-row small:gap-12 xsmall:flex-col 2xsmall:flex-col xsmall:items-center 2xsmall:items-center">
+        <div className="w-full mx-auto flex small:flex-row small:gap-12 xsmall:flex-col 2xsmall:flex-col small:items-start 2xsmall:items-center xsmall:items-center ">
           <div className="block w-1/2 relative">
             <ImageDetails images={product?.images || []} />
 
           </div>
-          <div className="small:w-1/2 flex flex-col small:flex-col gap-3 small:sticky small:top-48 small:py-0 small:max-w-[300px]" >
+          <div className="small:w-1/2 flex flex-col items-start small:flex-col gap-3 small:top-48 small:py-0 " >
             <ProductInfo product={product} />
-            <div>
+            <div className="w-full">
               <ProductOnboardingCta />
               <Suspense
                 fallback={
@@ -61,7 +61,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
         </div>
 
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-full w-full py-8  gap-y-6">
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-full w-full py-8  gap-y-6 ">
           <Heading level="h2" className="text-2xl leading-10 text-ui-fg-base pl-3" data-testid="product-title">
             Description
           </Heading>

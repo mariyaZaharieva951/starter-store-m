@@ -12,6 +12,8 @@ import { addToCart } from "@modules/cart/actions"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/option-select"
 import OptionQuantity from "@modules/products/components/option-quantity"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
@@ -36,6 +38,8 @@ export default function ProductActions({
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isLiking, setIsLiking] = useState(false);
 
   const countryCode = useParams().countryCode as string
 
@@ -136,15 +140,29 @@ export default function ProductActions({
     setIsAdding(false)
   }
 
+  const handleLike = () => {
+    if (!isLiking) {
+    
+      setIsLiking(true); 
+
+      
+      setTimeout(() => {
+       
+        setIsLiked(true); 
+        setIsLiking(false); 
+      }, 1000); 
+  };}
+
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div className="flex w-full flex-col gap-y-2 2xsmall:px-20" ref={actionsRef}>
+      <Divider />
         <div>
           {product.variants.length > 1 && (
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-4 mt-5">
               {(product.options || []).map((option) => {
                 return (
-                  <div key={option.id} className="flex w-full justify-between">
+                  <div key={option.id} className="flex w-full gap-5 py-2">
                     <OptionSelect
                       option={option}
                       current={options[option.id]}
@@ -180,19 +198,43 @@ export default function ProductActions({
         </Button>
       )} */}
         </div>
-        <div className="flex justify-between">
+        <div className="flex w-full h-[48px] items-center justify-between mt-2">
           <ProductPrice product={product} variant={variant} region={region} />
+          <div className="flex gap-3">
+            <Button
+              onClick={handleAddToCart}
+              // disabled={!inStock || !variant || !!disabled || isAdding}
+              // variant="primary"
+              className="w-[145px] h-[48px] custom-button bg-whiteText text-violetLight !boder-2 !border-violetLight hover:bg-violetLight hover:text-whiteText"
+              isLoading={isAdding}
+              data-testid="add-product-button"
+            >
+              Buy now
+            </Button>
 
-          <Button
-            onClick={handleAddToCart}
-            disabled={!inStock || !variant || !!disabled || isAdding}
-            // variant="primary"
-            className="w-[145px] custom-button bg-myviolet text-whiteText"
-            isLoading={isAdding}
-            data-testid="add-product-button"
-          >
-            {!inStock ? "Out of stock" : "Add to cart"}
-          </Button>
+            <Button
+              onClick={handleAddToCart}
+              // disabled={!inStock || !variant || !!disabled || isAdding}
+              variant="primary"
+              className="w-[145px] h-[48px] custom-button bg-myviolet text-whiteText hover:bg-whiteText hover:text-violetLight"
+              isLoading={isAdding}
+              data-testid="add-product-button"
+            >
+              {!inStock ? "Out of stock" : "Add to cart"}
+            </Button>
+
+            <button
+              onClick={handleLike}
+              
+              className="w-[46px] h-[48px] p-3 rounded border-2 border-gray-light bg-text-whiteText"
+              disabled={isLiking}
+            >
+              <FontAwesomeIcon
+                icon={faHeart}
+                className={isLiked ? 'text-red-500' : 'text-gray'}
+              />
+            </button>
+          </div>
           <MobileActions
             product={product}
             variant={variant}
