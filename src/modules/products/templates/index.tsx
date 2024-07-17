@@ -36,13 +36,13 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         data-testid="product-container"
       >
         <div className="w-full mx-auto flex small:flex-row small:gap-12 xsmall:flex-col 2xsmall:flex-col small:items-start 2xsmall:items-center xsmall:items-center ">
-          <div className="block w-1/2 relative">
+          <div className="xsmall:w-full 2xsmall:w-full small:w-1/2 block relative">
             <ImageDetails images={product?.images || []} />
 
           </div>
-          <div className="small:w-1/2 flex flex-col items-start small:flex-col gap-3 small:top-48 small:py-0 " >
+          <div className="xsmall:w-full 2xsmall:w-full small:w-1/2 flex flex-col items-start small:flex-col gap-3 small:top-48 small:py-0 " >
             <ProductInfo product={product} />
-            <div className="w-full">
+            <div className="xsmall:w-full 2xsmall:w-full small:w-full">
               <ProductOnboardingCta />
               <Suspense
                 fallback={

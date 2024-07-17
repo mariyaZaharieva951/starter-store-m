@@ -155,7 +155,7 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="flex w-full flex-col gap-y-2 2xsmall:px-20" ref={actionsRef}>
+      <div className="flex w-full flex-col gap-y-2" ref={actionsRef}>
       <Divider />
         <div>
           {product.variants.length > 1 && (
@@ -205,7 +205,7 @@ export default function ProductActions({
               onClick={handleAddToCart}
               // disabled={!inStock || !variant || !!disabled || isAdding}
               // variant="primary"
-              className="w-[145px] h-[48px] custom-button bg-whiteText text-violetLight !boder-2 !border-violetLight hover:bg-violetLight hover:text-whiteText"
+              className="xsmall:w-[80px] 2xsmall:w-[80px] xsmall:h-[32px] 2xsmall:h-[32px] small:w-[145px] small:h-[48px] small:custom-button bg-whiteText text-violetLight !boder-2 !border-violetLight hover:bg-violetLight hover:text-whiteText"
               isLoading={isAdding}
               data-testid="add-product-button"
             >
@@ -216,7 +216,7 @@ export default function ProductActions({
               onClick={handleAddToCart}
               // disabled={!inStock || !variant || !!disabled || isAdding}
               variant="primary"
-              className="w-[145px] h-[48px] custom-button bg-myviolet text-whiteText hover:bg-whiteText hover:text-violetLight"
+              className="xsmall:w-[80px] 2xsmall:w-[80px] xsmall:h-[32px] 2xsmall:h-[32px] small:w-[145px] small:h-[48px] small:custom-button bg-myviolet text-whiteText hover:bg-whiteText hover:text-violetLight"
               isLoading={isAdding}
               data-testid="add-product-button"
             >
@@ -226,7 +226,7 @@ export default function ProductActions({
             <button
               onClick={handleLike}
               
-              className="w-[46px] h-[48px] p-3 rounded border-2 border-gray-light bg-text-whiteText"
+              className="flex xsmall:w-[46px] 2xsmall:w-[46px] xsmall:h-[32px] 2xsmall:h-[32px] small:w-[46px] small:h-[48px] p-3 rounded border-2 border-gray-light bg-text-whiteText items-center justify-center"
               disabled={isLiking}
             >
               <FontAwesomeIcon
